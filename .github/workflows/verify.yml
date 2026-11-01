@@ -17,7 +17,10 @@ jobs:
       - name: Install solana-verify
         run: cargo install solana-verify --locked
       - name: Deterministic build
-        run: solana-verify build --library-name bouncer
+        run: |
+          V=$(solana --version | awk '{print $2}')
+          echo "Solana CLI $V"
+          solana-verify build --library-name bouncer --base-image solanafoundation/solana-verifiable-build:$V
       - name: Compare with mainnet
         run: |
           LOCAL=$(solana-verify get-executable-hash target/deploy/bouncer.so)
