@@ -18,8 +18,11 @@ jobs:
         run: cargo install solana-verify --locked
       - name: Deterministic build
         run: |
-          V=$(solana --version | awk '{print $2}')
-          echo "Solana CLI $V"
+          # Newest published verifiable-build image
+          V=$(curl -s "https://hub.docker.com/v2/repositories/solanafoundation/solana-verifiable-build/tags?page_size=100" \
+            | jq -r '.results[].name' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          echo "Image $V"
+          echo "::notice title=Image::solanafoundation/solana-verifiable-build:$V"
           solana-verify build --library-name bouncer --base-image solanafoundation/solana-verifiable-build:$V
       - name: Compare with mainnet
         run: |
