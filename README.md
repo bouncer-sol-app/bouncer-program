@@ -2,6 +2,8 @@
 
 The Solana program behind [bouncer.family](https://bouncer.family), a memecoin launchpad with a door policy against bundlers.
 
+**Official $BOUNCER token:** [`6SsWu1LfJtHq7XikR3o1qWobHMxkAWEupXp7qCqKpump`](https://solscan.io/token/6SsWu1LfJtHq7XikR3o1qWobHMxkAWEupXp7qCqKpump) · [DexScreener](https://dexscreener.com/solana/6SsWu1LfJtHq7XikR3o1qWobHMxkAWEupXp7qCqKpump) · [pump.fun](https://pump.fun/coin/6SsWu1LfJtHq7XikR3o1qWobHMxkAWEupXp7qCqKpump). This is the only official token; always check the address before you buy.
+
 **Program ID (mainnet):** [`BNCo74BKMR2jg4FLcvKpwbXJdABMzvYMzNwwaqefqnmu`](https://solscan.io/account/BNCo74BKMR2jg4FLcvKpwbXJdABMzvYMzNwwaqefqnmu)
 
 ## Door policy
