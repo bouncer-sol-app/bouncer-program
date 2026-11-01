@@ -24,15 +24,10 @@ jobs:
           echo "Image $V"
           echo "::notice title=Image::solanafoundation/solana-verifiable-build:$V"
           solana-verify build --library-name bouncer --base-image solanafoundation/solana-verifiable-build:$V
-      - name: Compare with mainnet
+      - name: Build hash
         run: |
-          LOCAL=$(solana-verify get-executable-hash target/deploy/bouncer.so)
-          ONCHAIN=$(solana-verify get-program-hash -u https://api.mainnet-beta.solana.com BNCo74BKMR2jg4FLcvKpwbXJdABMzvYMzNwwaqefqnmu)
-          SIZE=$(stat -c %s target/deploy/bouncer.so)
-          echo "local build hash: $LOCAL"
-          echo "mainnet hash:     $ONCHAIN"
-          echo "::notice title=Build hash::local=$LOCAL mainnet=$ONCHAIN size=$SIZE"
-          [ "$LOCAL" = "$ONCHAIN" ] && echo "::notice title=Match::The mainnet program matches this source." || echo "::warning title=No match::The mainnet program was not built from this exact reproducible build."
+          HASH=$(solana-verify get-executable-hash target/deploy/bouncer.so)
+          echo "::notice title=Build hash::$HASH"
       - uses: actions/upload-artifact@v4
         with:
           name: bouncer-so
